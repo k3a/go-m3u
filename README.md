@@ -15,6 +15,7 @@ file, err := os.Open("./test/working.m3u")
 if err != nil {
   panic(err)
 }
+defer file.Close()
 
 // parse M3U input
 if err := m3.Read(file); err != nil {
