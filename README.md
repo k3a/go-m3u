@@ -8,35 +8,35 @@ Supports EXTINF attributes.
 ## Usage
 
 ```
-	m3u := new(M3U)
+m3u := new(M3U)
 
-  // open file or other M3U stream
-	file, err := os.Open("./test/working.m3u")
-	if err != nil {
-		panic(err)
-	}
+// open file or other M3U stream
+file, err := os.Open("./test/working.m3u")
+if err != nil {
+  panic(err)
+}
 
-  // parse M3U input
-	if err := m3u.Read(file); err != nil {
-		panic(err)
-	}
+// parse M3U input
+if err := m3u.Read(file); err != nil {
+  panic(err)
+}
 
-  // debug print
-	fmt.Println(m3u.String())
+// debug print
+fmt.Println(m3u.String())
 
-  // loop stored m3u records
-  for _, record := range m3u.Records() {
-    // ...
-  }
+// loop stored m3u records
+for _, record := range m3u.Records() {
+  // ...
+}
 
-  // write M3U to output
-	b := new(strings.Builder)
-	if err := m3u.Write(b); err != nil {
-		t.Fatal(err)
-	}
+// write M3U to output
+b := new(strings.Builder)
+if err := m3u.Write(b); err != nil {
+  t.Fatal(err)
+}
 
-  // print the written data
-  fmt.Println(m3u.String())
+// print the written data
+fmt.Println(m3u.String())
 ```
 
 ## License
