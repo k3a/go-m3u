@@ -7,7 +7,7 @@ Supports EXTINF attributes.
 
 ## Usage
 
-```
+```go
 m3u := new(M3U)
 
 // open file or other M3U stream
