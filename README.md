@@ -1,3 +1,5 @@
+[![GoDoc](https://godoc.org/github.com/k3a/go-m3u?status.svg)](https://godoc.org/github.com/k3a/go-m3u)
+
 # go-m3u
 
 Simple library to read and write M3U records.
@@ -21,6 +23,11 @@ Supports EXTINF attributes.
 
   // debug print
 	fmt.Println(m3u.String())
+
+  // loop stored m3u records
+  for _, record := range m3u.Records() {
+    // ...
+  }
 
   // write M3U to output
 	b := new(strings.Builder)

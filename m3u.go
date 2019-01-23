@@ -79,6 +79,11 @@ func (m *M3U) Add(r *Record) {
 	*m = append(*m, r)
 }
 
+// Records returns mutable list of M3U records
+func (m *M3U) Records() []*Record {
+	return *m
+}
+
 var m3uExtInfRE = regexp.MustCompile(`#EXTINF:(\S+)\s*(.*),(.*)`)
 var m3uAttrRE = regexp.MustCompile(`(.+)="([^"]*)"`)
 
