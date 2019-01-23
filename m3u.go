@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -161,4 +162,36 @@ func (m *M3U) Read(rdr io.Reader) error {
 	}
 
 	return nil
+}
+
+// WriteToFile writes M3U to file
+func (m *M3U) WriteToFile(path string) error {
+	file, err := os.OpenFile(path, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644) //nolint
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	if err := m.Write(file); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ReadFromFile attempts to read and parse M3U from a file path
+func ReadFromFile(path string) (*M3U, error) {
+	m3 := new(M3U)
+
+	file, err := os.Open(path) //nolint
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	if err := m3.Read(file); err != nil {
+		return nil, err
+	}
+
+	return m3, nil
 }
